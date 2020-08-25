@@ -1,0 +1,212 @@
+:root{
+    --left-col-width: 240px;
+}
+.admin_menu__logo img{
+    max-width:100%;
+    display:block;
+    margin:15px auto;
+}
+.admin_menu__logo{
+    border-bottom: 1px solid #88a7c1;
+}
+.admin_menu__container{
+    border-top: 1px solid #41526b;
+}
+.admin_menu__wrapper{
+    position:fixed;
+    left:0;
+    width: var(--left-col-width);
+    bottom:0;
+    top:0;
+    background:#537397;
+    border-right:1px solid #808080;
+}
+.admin_menu__container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.admin_menu__container li{
+    /*border-bottom:1px solid #050506;*/
+}
+.admin_menu__container li a{
+    display:block;
+    padding:15px;
+    text-decoration:none;
+    color:#FFF;
+}
+.admin_menu__container li a i{
+    margin-right: 10px;
+    font-size: 1.3em;
+    float: left;
+    opacity: .6;
+}
+.admin_menu__container li:hover{
+    background:rgba(69,96,130,.5);
+}
+.admin_menu__container li.active a{
+    background:#456082;
+}
+.admin_menu__container .delimiter{
+    border-bottom:1px solid #88a7c1;
+    border-top:1px solid #41526b;
+}
+
+.admin_content__header{
+    position: fixed;
+    top: 0;
+    left: var(--left-col-width);
+    right: 0;
+    padding: 15px;
+    background: #f1f6fb;
+    border-bottom: 1px solid #d4e2e6;
+    color: #41526b;
+    font-weight:400;
+    font-size: 20px;
+    padding: 11px 15px;
+}
+.admin_content__header a{
+    text-decoration: none;
+    float: right;
+    display: block;
+    padding: 17px 25px;
+    font-size: 14px;
+    margin: -15px;
+    border-left: 1px solid #d4e2e6;
+    color: #f1621e;
+}
+
+.admin_content__wrapper{
+    margin-left: var(--left-col-width);
+    padding:15px;
+    margin-top:48px;
+    margin-bottom:60px;
+}
+/*.admin_content__wrapper form label{
+    display:block;
+    color:navy;
+    font-weight:bold;
+    margin-bottom:25px;
+}*/
+.admin_content__wrapper form label input, .admin_content__wrapper form label textarea{
+    display:block;
+    padding:10px;
+    margin-top:5px;
+    width:100%;
+}
+.admin_content__wrapper form label textarea{
+    resize:vertical;
+}
+.admin_content_table{
+    width:100%;
+    border-collapse:collapse;
+    margin:0;
+    padding:0;
+}
+.admin_content_table th, .admin_content_table td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #E5E5E5;
+    background:#FFF;
+}
+.admin_content_table th{
+    border-bottom:2px solid #537397;
+}
+.as_default_link{
+    cursor:pointer;
+}
+.admin_content_table tr:hover td{
+    background:#f5fcff;
+}
+.admin_content_table td .btn{
+    margin:-5px 0;
+}
+.td__min{
+    width:1%;
+    white-space: nowrap;
+}
+.btn{
+    display: inline-block;
+    cursor: pointer;
+    /*font-family: arial,sans-serif;*/
+    font-size: 12px;
+    /*font-weight: bold;*/
+    color: rgb(68,68,68);
+    text-decoration: none;
+    user-select: none;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 4px;
+    background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+    transition: all .218s ease 0s;
+}
+.btn__big{
+    font-size: 14px;
+    padding: 14px 28px;
+}
+.btn__green{
+    color:#FFF;
+    background:green;
+}
+.btn__blue{
+    color:#FFF;
+    background:#537397;    
+}
+.btn__blue:hover{
+    background:#456082;
+}
+.btn__red{
+    color:#FFF;
+    background:red;
+}
+.btn__red:hover{
+    color:#FFF;
+    background:red;
+}
+.edit__control{
+    display:block;
+    color:#456082;
+    font-weight:400;
+    font-size:14px;
+    margin-bottom:25px;
+}
+.edit__control input{
+    border:1px solid #E5E5E5;
+    border-radius:2px;
+    font:inherit;
+    color:#000;
+    padding:10px;
+}
+.edit__control input:focus{
+    border:1px solid #537397;
+}
+.label__help{
+    font-size:12px;
+    color:#537397;
+}
+.edit{
+    display: block;
+    padding: 15px;
+    background: #FFF;
+    box-shadow: 1px 0 2px #CCC;
+}
+.fieldset{
+    border:1px solid #F3F3F3;
+    border-radius:3px;
+    padding:15px;
+}
+.fieldset legend{
+    color: #456082;
+}
+.form_buttons{
+    position:fixed;
+    bottom:0;
+    right:0;
+    width:Calc(100% - var(--left-col-width));
+    background:#FFF;
+    padding:15px;
+}
+.form_buttons .btn__red{
+    float:right;  
+}
