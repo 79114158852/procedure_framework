@@ -18,21 +18,29 @@
         
         global $app_db;
         
-        $connector ?? $app_db[0];
+        if ( empty($connector) ) $connector = $app_db[0];
         
         return call_user_func_array('db_'.$connector['type'].'_query', [$query, $connector['link']]);
     
     }
   
   
-    function db_assoc($res){
+    function db_assoc($res, $connector = ''){
+        
+        global $app_db;
+        
+        if ( empty($connector) ) $connector = $app_db[0];
         
         return call_user_func_array('db_'.$connector['type'].'_assoc', [$res]);
     
     }
     
     
-    function db_array($res){
+    function db_array($res, $connector = ''){
+        
+        global $app_db;
+        
+        if ( empty($connector) ) $connector = $app_db[0];
         
         return call_user_func_array('db_'.$connector['type'].'_array', [$res]);
     
@@ -43,7 +51,7 @@
         
         global $app_db;
         
-        $connector ?? $app_db[0];
+        if ( empty($connector) ) $connector = array_slice($app_db, 0, 1);
         
         return call_user_func_array('db_'.$connector['type'].'_antisql', [$text, $connector['link']]);
     

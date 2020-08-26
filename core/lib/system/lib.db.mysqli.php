@@ -4,7 +4,7 @@
     
     function db_mysqli_connect($options){
         
-        return mysqli_connect($options['host'], $options['user'], $options['pass']);
+        return mysqli_connect($options['host'], $options['user'], $options['pass'], $options['name']);
         
         db_mysqli_query('SET NAMES UTF8');
     
@@ -13,7 +13,11 @@
     
     function db_mysqli_query($query, $connector){
         
-        return mysqli_query($connector, $query);
+        $res = mysqli_query($connector, $query);
+        
+        if(mysqli_errno($connector))  message_add('<p style="color:#FFF; background: red; padding:15px;">'.$query.'<hr>'.mysqli_errno($connector).'<hr>'.mysqli_error($connector).'</p>', 'fatal');
+        
+        return $res;
     
     }
     

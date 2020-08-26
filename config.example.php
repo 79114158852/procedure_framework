@@ -19,6 +19,7 @@
 			"name" : "dbname"
 		}
 		
-	}
-
+	},
+	"404": "404", 
+	"auth_page": "auth"
 }

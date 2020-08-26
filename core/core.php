@@ -14,16 +14,13 @@
     
     core_require_file(__DIR__.'/lib/system/lib.db.php');
     
+    core_require_file(__DIR__.'/lib/system/lib.utils.php');
+    
     foreach(__CONFIG__['db'] as $name => $options){
           
-        $app_db[$name] = ['link' => db_create_connect($options), 'type' => $options['type']];
+        $app_db[] = ['name'=>$name, 'link' => db_create_connect($options), 'type' => $options['type']];
     
     }
-    
-        
-    
-    
-    
     
     function core_require_file($file, $mode = 'require', $once = true){
       
@@ -58,6 +55,8 @@
           }
                     
       } else {
+          
+          message_add('Файл <b>'.$file.'</b> не существует!','fatal');
           
           return false;
           
@@ -96,7 +95,9 @@
         
         $config = json_decode($config, true);
         
-        if ( $index  == '' ) { return $config; } else { return $config[$index]; }
+        if(json_last_error()) message_add('Ошибка парсинга конфигурации: '.json_last_error_msg().'!', 'fatal');
+        
+        return $index  == '' ? $config : $config[$index] ; 
     
     }
     
