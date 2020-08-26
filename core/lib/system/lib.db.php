@@ -14,9 +14,7 @@
     
     }
     
-    
-    
-   function db_query($query, $connector = ''){
+    function db_query($query, $connector = ''){
         
         global $app_db;
         
@@ -25,3 +23,31 @@
         return call_user_func_array('db_'.$connector['type'].'_query', [$query, $connector['link']]);
     
     }
+  
+  
+    function db_assoc($res){
+        
+        return call_user_func_array('db_'.$connector['type'].'_assoc', [$res]);
+    
+    }
+    
+    
+    function db_array($res){
+        
+        return call_user_func_array('db_'.$connector['type'].'_array', [$res]);
+    
+    }
+    
+    
+    function db_antisql($text, $connector){
+        
+        global $app_db;
+        
+        $connector ?? $app_db[0];
+        
+        return call_user_func_array('db_'.$connector['type'].'_antisql', [$text, $connector['link']]);
+    
+    }
+    
+    
+    

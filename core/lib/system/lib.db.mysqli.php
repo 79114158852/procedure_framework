@@ -16,3 +16,23 @@
         return mysqli_query($connector, $query);
     
     }
+    
+    function db_mysqli_assoc($res){
+        
+        return mysqli_fetch_assoc($res);
+    
+    }    
+    
+    
+    function db_mysqli_array($res){
+        
+        return mysqli_fetch_array($res);
+    
+    }    
+    
+    
+    function db_mysqli_antisql($text, $connector){
+        
+        return mysqli_real_escape_string($connector, $text);
+    
+    }    
