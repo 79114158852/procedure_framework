@@ -6,15 +6,19 @@
     
     session_start();
     
+    define('__ROOT__', __DIR__);
+    
     core_require_file(__DIR__.'/lib/system/lib.message.php');
+    
+    core_require_file(__DIR__.'/lib/system/lib.utils.php');
     
     define('__CONFIG__', core_config_get());
     
-    define('__ROOT__', __DIR__);
-    
     core_require_file(__DIR__.'/lib/system/lib.db.php');
     
-    core_require_file(__DIR__.'/lib/system/lib.utils.php');
+    core_require_file(__DIR__.'/lib/system/lib.module.php');
+    
+    core_require_file(__DIR__.'/lib/system/lib.user.php');
     
     foreach(__CONFIG__['db'] as $name => $options){
           
@@ -93,9 +97,7 @@
         
         if ( !$config ) message_add('Файл конфигурации не найден!', 'fatal');
         
-        $config = json_decode($config, true);
-        
-        if(json_last_error()) message_add('Ошибка парсинга конфигурации: '.json_last_error_msg().'!', 'fatal');
+        $config  = utils_json_encode($config);
         
         return $index  == '' ? $config : $config[$index] ; 
     

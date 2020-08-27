@@ -6,13 +6,23 @@
         
         #Роутер
         
-        page_find();
+        $user = user_init();
+        
+        $page = page_find();
+        
+        if ( $user['sys_user_access'] < $page['sys_page_access'] ) {
+            
+            message_add('Необходима авторизация...');
+            
+            web_redirect(core_config_get('auth'));
+            
+        }    
         
         
         
+        utils_array($page);
         
-        
-        
+        utils_array($user);
         
     }
     

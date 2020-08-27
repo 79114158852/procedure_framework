@@ -3,7 +3,8 @@
   "fields": {
                  "id"      : {
                                 "teg"       : "#",
-                                "type"      : "auto" 
+                                "type"      : "auto", 
+                                "view"      : 3
                              },
                   "link"   : {
                                 "teg"       : "Путь",
@@ -18,7 +19,7 @@
                                 "sort"      : 1,
                                 "filter"    : 1, 
                                 "view"      : 3
-                             },              
+                             },  
                   "access"   : {
                                 "teg"       : "Доступ",
                                 "type"      : "int", 
@@ -26,7 +27,7 @@
                                 "filter"    : 1, 
                                 "view"      : 3,
                                 "source"    : "sys_access.name",
-                                "link"      : "sys_access.id"
+                                "link"      : "sys_access.score"
                              },              
                   "meta_desc"   : {
                                 "teg"       : "Description",
@@ -38,11 +39,6 @@
                                 "type"      : "varchar(150)", 
                                 "view"      : 2
                              },                
-                  "templates"   : {
-                                "teg"       : "Шаблоны",
-                                "type"      : "json", 
-                                "view"      : 2
-                             },
                   "css"   : {
                                 "teg"       : "Дополнительные файлы CSS",
                                 "type"      : "text", 
@@ -52,7 +48,22 @@
                                 "teg"       : "Дополнительные файлы JS",
                                 "type"      : "text", 
                                 "view"      : 2
-                             }                                                                                       
+                             },
+                  "header"   : {
+                                "teg"       : "Шаблон (header)",
+                                "type"      : "filename", 
+                                "view"      : 3
+                             },
+                  "body"   : {
+                                "teg"       : "Шаблон (body)",
+                                "type"      : "filename", 
+                                "view"      : 3
+                             },                               
+                  "footer"   : {
+                                "teg"       : "Шаблон (footer)",
+                                "type"      : "filename", 
+                                "view"      : 3
+                             }
     
                          
             }

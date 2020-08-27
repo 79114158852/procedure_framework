@@ -35,6 +35,28 @@
     
     }
     
+    function db_array_all($res, $connector = ''){
+        
+        global $app_db;
+        
+        if ( empty($connector) ) $connector = $app_db[0];
+        
+        return call_user_func_array('db_'.$connector['type'].'_array_all', [$res]);
+    
+    }
+    
+    
+    function db_assoc_all($res, $connector = ''){
+        
+        global $app_db;
+        
+        if ( empty($connector) ) $connector = $app_db[0];
+        
+        return call_user_func_array('db_'.$connector['type'].'_assoc_all', [$res]);
+    
+    }    
+    
+    
     
     function db_array($res, $connector = ''){
         
@@ -44,6 +66,16 @@
         
         return call_user_func_array('db_'.$connector['type'].'_array', [$res]);
     
+    }
+    
+    function db_rows($res){
+    
+        global $app_db;
+        
+        if ( empty($connector) ) $connector = $app_db[0];
+        
+        return call_user_func_array('db_'.$connector['type'].'_rows', [$res]);
+        
     }
     
     

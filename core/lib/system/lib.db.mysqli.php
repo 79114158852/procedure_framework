@@ -25,7 +25,26 @@
         
         return mysqli_fetch_assoc($res);
     
-    }    
+    } 
+
+
+    function db_mysqli_array_all($res){
+        
+        return mysqli_fetch_all($res);
+    
+    } 
+    
+    function db_mysqli_assoc_all($res){
+        
+        return mysqli_fetch_all($res, MYSQLI_ASSOC);
+    
+    }     
+    
+    function db_mysqli_rows($res){
+        
+        return mysqli_num_rows($res);
+    
+    }
     
     
     function db_mysqli_array($res){
