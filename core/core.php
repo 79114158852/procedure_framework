@@ -10,7 +10,7 @@
     
     core_require_file(__DIR__.'/lib/system/lib.message.php');
     
-    core_require_file(__DIR__.'/lib/system/lib.utils.php');
+    core_require_file(__DIR__.'/lib/system/lib.util.php');
     
     define('__CONFIG__', core_config_get());
     
