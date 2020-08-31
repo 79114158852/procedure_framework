@@ -20,6 +20,8 @@
     
     core_require_file(__DIR__.'/lib/system/lib.user.php');
     
+    core_require_file(__DIR__.'/lib/system/lib.template.php');
+    
     foreach(__CONFIG__['db'] as $name => $options){
           
         $app_db[] = ['name'=>$name, 'link' => db_create_connect($options), 'type' => $options['type']];
@@ -30,7 +32,7 @@
       
       #Подключение файла и вывод сообщения в случае его отсутсвия
       
-      if ( file_exists($file) ) {
+      if ( file_exists($file) && is_file($file)) {
                     
           switch ( $mode ){
           
@@ -42,7 +44,7 @@
 
                 break;
               
-              default:
+              case "get":
                 
                 return file_get_contents($file);
                 

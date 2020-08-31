@@ -17,12 +17,18 @@
             web_redirect(core_config_get('auth'));
             
         }    
+                
+        template_render(template_get($page['sys_page_header']), $page);
         
+        template_render(template_get($page['sys_page_body']), $page);
         
+        template_render(template_get($page['sys_page_footer']), $page);
+        
+        /*echo file_get_contents('/var/www/holcity/views/_header.tpl');
         
         utils_array($page);
         
-        utils_array($user);
+        utils_array($user);*/
         
     }
     
