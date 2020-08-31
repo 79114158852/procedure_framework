@@ -4,7 +4,7 @@
         
     function web_route(){
         
-        #Роутер
+        #Р РѕСѓС‚РµСЂ
         
         $user = user_init();
         
@@ -12,9 +12,11 @@
         
         if ( $user['sys_user_access'] < $page['sys_page_access'] ) {
             
-            message_add('Необходима авторизация...');
+            message_add('РќРµРѕР±С…РѕРґРёРјР° Р°РІС‚РѕСЂРёР·Р°С†РёСЏ...');
             
             web_redirect(core_config_get('auth'));
+            
+            die();
             
         }    
                 
@@ -29,16 +31,20 @@
     
     function web_redirect($url = ''){
         
-        #Выполняет редирект
+        #Р’С‹РїРѕР»РЅСЏРµС‚ СЂРµРґРёСЂРµРєС‚
+        
+        $_SESSION['back'] = $_SERVER['REQUEST_URI'];
         
         header('location: '.($url == '' ? $_SERVER['REQUEST_URI'] : $url));
+        
+        exit();
         
     }
     
     
     function web_encode_url($url = ''){
         
-        #Кодирует ссылку в base64
+        #РљРѕРґРёСЂСѓРµС‚ СЃСЃС‹Р»РєСѓ РІ base64
         
         return base64_encode($url == '' ? $_SERVER['REQUEST_URI'] : $url);
         
@@ -47,19 +53,19 @@
     
     function web_get_urn($link = '', $argument = false, $url = false){
         
-        #Возвращает urn или uri
+        #Р’РѕР·РІСЂР°С‰Р°РµС‚ urn РёР»Рё uri
         
         if($link == '') $link = $_SERVER['REQUEST_URI'];
         
-        #Отсеиваем параметры из адреса
+        #РћС‚СЃРµРёРІР°РµРј РїР°СЂР°РјРµС‚СЂС‹ РёР· Р°РґСЂРµСЃР°
         
         if ( !$argument ) $link = preg_replace('/\?.*/', '', $link);
         
-        #Убираем первый слэш в адресе
+        #РЈР±РёСЂР°РµРј РїРµСЂРІС‹Р№ СЃР»СЌС€ РІ Р°РґСЂРµСЃРµ
         
         $link = substr($link, 1); 
         
-        #Если нужен uri добавляем url
+        #Р•СЃР»Рё РЅСѓР¶РµРЅ uri РґРѕР±Р°РІР»СЏРµРј url
         
         if ( $url ) $link = web_get_url().$link;
             
@@ -70,7 +76,7 @@
     
     function web_get_url(){
         
-        #Возвращает url
+        #Р’РѕР·РІСЂР°С‰Р°РµС‚ url
         
         $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
         

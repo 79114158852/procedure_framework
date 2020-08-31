@@ -61,6 +61,8 @@
          
          if ( !empty( $options['order'] ) ) $q .= ' ORDER BY '.join(', ', $options['order']);
          
+         //echo '<p>'.$q.'</p>';
+         
          return db_query($q);
          
     }

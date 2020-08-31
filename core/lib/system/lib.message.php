@@ -26,19 +26,38 @@
     
     function message_get($type = '') {
         
+        if ( !isset ( $_SESSION['messages'] ) ) return [];
+        
         $messages = [];
         
-        for ( $i = 0; $i < count($_SESSION['messages']); $i++ ) {
+        $k = -1;
         
-            if ( $type != '' && $_SESSION['messages'][$i][0] != $type ) continue;
-                
-            $messages[] = $_SESSION['messages'][$i];
+        foreach ( $_SESSION['messages'] as $message) {
             
-            unset($_SESSION['messages'][$i]);
+            $k++;
+        
+            if ( ( $type != '' && $message[0] != $type ) ) continue;
+                
+            $messages[] = $message;
+            
+            unset($_SESSION['messages'][$k]);
             
         }
         
         return $messages;
+        
+    }
+    
+    
+    function message_show($type = ''){
+    
+          $messages = message_get($type);
+          
+          foreach ( $messages as $message ) {
+          
+              echo '<div class="message '.$message[0].'"><span class="time">'.date('H:i:s', $message[2]).'</span>'.$message[1].'</div>';
+          
+          }
         
     }
     

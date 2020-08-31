@@ -41,7 +41,19 @@
     
     
     function template_position($position, $modules){
-    
-        
+          
+          if ( !$modules ) return false;
+          
+          foreach ( $modules as $module ) {
+              
+              if ( $module['sys_page_module_position'] == $position) {
+                    
+                    //echo '<h1>'.$position.'</h1>';
+                    
+                    module_load( $module['sys_page_module_module_id'] );
+                    
+              }      
+          
+          }
     
     }

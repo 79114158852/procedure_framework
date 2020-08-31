@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="<?php echo $vars['sys_page_meta_desc']; ?>">
 <meta name="keywords" content="<?php echo $vars['sys_page_meta_keys']; ?>">
+<link rel="shortcut icon" href="/assets/img/style/favicon.ico" type="image/x-icon">
 <base href="<?php echo web_get_url();?>">
 <title><?php echo $vars['sys_page_title']; ?></title>
 <link rel="stylesheet" href="/assets/font/css/all.min.css?v=1">

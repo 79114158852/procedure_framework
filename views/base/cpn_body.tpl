@@ -1,15 +1,15 @@
 <div class="admin_menu__wrapper">
   <div class="admin_menu__logo">
-    <img src="{assets}/img/logo.png">
+    <img src="/assets/img/logo.png">
   </div>
   <div class="admin_menu__container">
-    {pos_menu}
+    <?php template_position('menu', $vars['modules']); ?>
   </div>
 </div>
 <div class="admin_content__header">
-    {pos_header}
-    <a href="?logout">Выйти</a>
+    <?php template_position('header', $vars['modules']); ?>
+    <a href="?logout">Р’С‹Р№С‚Рё</a>
 </div>
 <div class="admin_content__wrapper">
-    {pos_content} 
+    <?php template_position('content', $vars['modules']); ?>
 </div>

@@ -29,4 +29,37 @@
     }
     
     
+    function user_login($login, $pass, $redirect = ''){
+        
+        if ( $login  && $pass ) {
+        
+            $user = model_db_select(model_db_get('sys_user'), ['where' => ["sys_user.login LIKE '".$login."' AND sys_user.pass LIKE '".$pass."'"]], 2);
+            
+            if ( db_rows($user) != 1) {
+                
+                message_add('Неверная пара логин/пароль...', 'error');
+            
+            } else {
+            
+                $user = db_assoc ( $user );
+                
+                $_SESSION['user_id'] = $user['sys_user_id'];
+                
+                message_add('Здравствуйте, '.$user['sys_user_name'], 'success');
+                
+                web_redirect($redirect);
+                
+                die();
+            
+            }
+            
+        } else {
+        
+            message_add('Логин/пароль не могут быть пустыми...');
+        
+        }    
+    
+    }
+    
+    
     
