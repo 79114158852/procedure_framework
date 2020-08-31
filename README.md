@@ -17,7 +17,7 @@ INSTALLATION
 
 Теперь вы можете создавать ваше приложение.
 
-<b>Демо приложение <a target="_blank" href="https://procframe.ru">здесь</a></b>
+<b>Демо приложение <a target=_blank href="https://procframe.ru">здесь</a></b>
 
 DOCUMENTATION
 
