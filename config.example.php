@@ -21,5 +21,5 @@
 		
 	},
 	"404": "/404", 
-	"auth_page": "/auth"
+	"auth": "/auth"
 }

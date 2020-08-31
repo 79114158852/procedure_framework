@@ -21,7 +21,7 @@
     
     function model_db_select($model, $options, $mode = 1){
           
-         $model = utils_json_encode($model);
+         $model = util_json_encode($model);
          
          $q = "SELECT ";
          

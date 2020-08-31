@@ -2,58 +2,46 @@
 
     core_secret();
     
-    function template_get($filename){
+    function template_load($template, $page){
         
-        return core_require_file(__ROOT__.'/../views/'.$filename, 'get');
-        
+       core_require_file(__ROOT__.'/../views/'.$template, 'require', false, $page);
+       
     }
     
     
-    function template_render($template, $data){
-                        
-        preg_match_all('/\{.*?\}/ui', $template, $matches, PREG_SET_ORDER, 0);
+    function template_add_css($page){
         
-        foreach ($matches as $match) {  
-            
-            $replace = '';
-            
-            $temp_match = explode(' ', str_replace(['{','}'], '', $match[0]));
-            
-            switch ( $temp_match[0] ){
-            
-                
-                
-                default: 
-                    
-                    if(strpos($temp_match[0], '[') === false)  {
-                    
-                        
-                        
-                    } else {
-                        
-                        //util_array($data);
-                    
-                        echo $temp_match[0];
-                    
-                        $replace = ${"data['sys_page_title']"};
-                        
-                        
-                    
-                    } 
-                    
-                    break;
-            
-            
-            }
-            
-            str_replace($match, $replace, $template);
+        if ( !$page['sys_page_css'] ) return false;
         
+        $arr_css = explode(',', $page['sys_page_css']);
+        
+        foreach ($arr_css as $css ) {
+        
+            echo '<link rel="stylesheet" type="text/css" href="'.$css.'?v='.time().'"/>';
+          
         }
+    
+    }
+    
+    
+    
+    function template_add_js($page){
         
+        if ( !$page['sys_page_js'] ) return false;
         
-        echo $template;
+        $arr_js = explode(',', $page['sys_page_js']);
         
-       // util_array($matches);
+        foreach ($arr_js as $js ) {
         
+            echo '<script src="/assets/js/'.$js.'"></script>';
+          
+        }
+    
+    }
+    
+    
+    function template_position($position, $modules){
+    
         
+    
     }

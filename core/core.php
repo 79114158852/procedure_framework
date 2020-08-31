@@ -28,7 +28,7 @@
     
     }
     
-    function core_require_file($file, $mode = 'require', $once = true){
+    function core_require_file($file, $mode = 'require', $once = true, $vars = ''){
       
       #Подключение файла и вывод сообщения в случае его отсутсвия
       
@@ -99,7 +99,7 @@
         
         if ( !$config ) message_add('Файл конфигурации не найден!', 'fatal');
         
-        $config  = utils_json_encode($config);
+        $config  = util_json_encode($config);
         
         return $index  == '' ? $config : $config[$index] ; 
     

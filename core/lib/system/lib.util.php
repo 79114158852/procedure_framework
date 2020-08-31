@@ -7,7 +7,7 @@
     }
     
     
-    function utils_json_encode($string, $assoc = true,  $fatal = true, $options = ''){
+    function util_json_encode($string, $assoc = true,  $fatal = true, $options = ''){
         
         $string = $assoc ? json_decode($string, true) : json_decode($string);
         

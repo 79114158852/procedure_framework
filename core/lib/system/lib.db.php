@@ -6,7 +6,7 @@
     
     function db_create_connect($options){
         
-        if( !core_require_file(__ROOT__.'/lib/system/lib.db.'.$options['type'].'.php') ) message_add('Библиоетка баз данных '.$options['type'].' не найдена!', 'fatal');
+        core_require_file(__ROOT__.'/lib/system/lib.db.'.$options['type'].'.php');
         
         $func_name = 'db_'.$options['type'].'_connect';
         
