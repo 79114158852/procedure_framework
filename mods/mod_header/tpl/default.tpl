@@ -1,0 +1,1 @@
+<?php echo $page['sys_page_title']; ?>

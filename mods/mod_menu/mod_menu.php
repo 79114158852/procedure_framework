@@ -2,7 +2,7 @@
 
     core_secret();
     
-    $options = util_json_encode($vars['sys_module_options']);
+    $options = util_json_encode($mod['sys_module_options']);
     
     $model = model_db_get('sys_menu_item');
         
@@ -10,7 +10,7 @@
     
     $options['order'] = ['sys_menu_item.ordering'];
     
-    $items = model_db_select($model, $options);
+    $items = model_db_select($model, $options, 2);
     
     $items = db_rows($items) > 0 ? db_assoc_all($items) : [];
     

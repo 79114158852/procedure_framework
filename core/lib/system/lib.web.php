@@ -10,13 +10,27 @@
         
         $page = page_find();
         
+        //util_array($page);
+        
         if ( $user['sys_user_access'] < $page['sys_page_access'] ) {
             
-            message_add('Необходима авторизация...');
+            if ( $user['sys_user_id'] > 0 ) {
+                
+                message_add('У вас нет доступа...');
+                
+                web_redirect($_SESSION['back'] ?? '/');
+                
+                die();            
+                
+            } else {
             
-            web_redirect(core_config_get('auth'));
+                message_add('Необходима авторизация...');
+                
+                web_redirect(core_config_get('auth'));
+                
+                die();            
             
-            die();
+            }
             
         }    
                 
@@ -37,7 +51,7 @@
         
         header('location: '.($url == '' ? $_SERVER['REQUEST_URI'] : $url));
         
-        exit();
+        die();
         
     }
     
@@ -68,7 +82,7 @@
         #Если нужен uri добавляем url
         
         if ( $url ) $link = web_get_url().$link;
-            
+                   
         return $link;
     
     }

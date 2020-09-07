@@ -1,0 +1,6 @@
+<?php
+
+    core_secret();
+    
+    
+    

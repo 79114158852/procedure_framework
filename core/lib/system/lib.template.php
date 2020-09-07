@@ -4,7 +4,7 @@
     
     function template_load($template, $page){
         
-       core_require_file(__ROOT__.'/../views/'.$template, 'require', false, $page);
+       require __ROOT__.'/../views/'.$template;
        
     }
     

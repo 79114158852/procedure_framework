@@ -8,19 +8,19 @@
     
     define('__ROOT__', __DIR__);
     
-    core_require_file(__DIR__.'/lib/system/lib.message.php');
+    require_once __DIR__.'/lib/system/lib.message.php';
     
-    core_require_file(__DIR__.'/lib/system/lib.util.php');
+    require_once  __DIR__.'/lib/system/lib.util.php';
     
     define('__CONFIG__', core_config_get());
     
-    core_require_file(__DIR__.'/lib/system/lib.db.php');
+    require_once __DIR__.'/lib/system/lib.db.php';
     
-    core_require_file(__DIR__.'/lib/system/lib.module.php');
+    require_once __DIR__.'/lib/system/lib.module.php';
     
-    core_require_file(__DIR__.'/lib/system/lib.user.php');
+    require_once __DIR__.'/lib/system/lib.user.php';
     
-    core_require_file(__DIR__.'/lib/system/lib.template.php');
+    require_once __DIR__.'/lib/system/lib.template.php';
     
     foreach(__CONFIG__['db'] as $name => $options){
           
@@ -28,47 +28,15 @@
     
     }
     
-    function core_require_file($file, $mode = 'require', $once = true, $vars = ''){
-      
-      #Подключение файла и вывод сообщения в случае его отсутсвия
-      
-      if ( file_exists($file) && is_file($file)) {
-                    
-          switch ( $mode ){
-          
-              case "include":
-                
-                $once ? include_once($file) : include($file);
-                
-                return true;
-
-                break;
-              
-              case "get":
-                
-                return file_get_contents($file);
-                
-                break;
-               
-              case "require": 
-                
-                $once ? require_once($file) : require($file);
-                
-                return true;
-
-                break;
-
-          }
-                    
-      } else {
-          
-          message_add('Файл <b>'.$file.'</b> не существует!','fatal');
-          
-          return false;
-          
-      }
+    
+    function core_file_exist ( $file ) {
+    
+        return file_exists ( $file )  && is_file ( $file ) ? true : false;
     
     }
+    
+    
+   
     
     
     
@@ -95,11 +63,11 @@
     
         #Возвращает указанный параметр конфигурации или конфигурацию целиком
         
-        $config = core_require_file(__DIR__.'/../config.php', 'get');
+        $file = __DIR__.'/../config.php';
         
-        if ( !$config ) message_add('Файл конфигурации не найден!', 'fatal');
+        if ( !core_file_exist ( $file ) ) message_add('Файл конфигурации не найден!', 'fatal');
         
-        $config  = util_json_encode($config);
+        $config  = util_json_encode(file_get_contents($file));
         
         return $index  == '' ? $config : $config[$index] ; 
     

@@ -3,7 +3,8 @@
                 "fields": {
                   "id": {
                                 "teg": "#",
-                                "type":"auto"
+                                "type":"auto",
+                                "view":3
                   },
                   "name": {
                                 "type": "varchar(250)",
@@ -23,7 +24,7 @@
                                 "type": "ordering",
                                 "teg": "Порядок",
                                 "sort": 0,
-                                "view": 0,
+                                "view": 3,
                                 "filter": 0
                   },
                   "menu_id"   : {

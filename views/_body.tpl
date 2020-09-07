@@ -1,3 +1,3 @@
 <div class="test_pos">
-<?php template_position('test', $vars['modules']); ?>
+<?php template_position('test', $page['modules']); ?>
 </div>

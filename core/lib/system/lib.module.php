@@ -31,7 +31,7 @@
         
         $mod = db_assoc($module);
         
-        core_require_file(__ROOT__.'/../mods/mod_'.$mod['sys_module_module'].'/mod_'.$mod['sys_module_module'].'.php', 'require', false, $mod);
+        require __ROOT__.'/../mods/mod_'.$mod['sys_module_module'].'/mod_'.$mod['sys_module_module'].'.php';
     
     }
     

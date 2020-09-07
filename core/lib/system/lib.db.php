@@ -2,11 +2,9 @@
 
     core_secret();
     
-    //echo 'ПОДКЛЮЧЕНО!!!!<hr>';
-    
     function db_create_connect($options){
         
-        core_require_file(__ROOT__.'/lib/system/lib.db.'.$options['type'].'.php');
+        require_once __ROOT__.'/lib/system/lib.db.'.$options['type'].'.php';
         
         $func_name = 'db_'.$options['type'].'_connect';
         
