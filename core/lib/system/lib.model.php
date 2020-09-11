@@ -81,13 +81,13 @@
         
         $enable = [3, $mode];
         
-        foreach ($model['fields'] as $field) {
+        foreach ($model['fields'] as $field_name => $field) {
           
             if ( in_array ($field['view'], $enable)){
                  
                 $field = array_merge(model_db_defoptions(), $field); 
                   
-                $header[] = $field;
+                $header[$field_name] = $field;
                 
             }
             
@@ -100,7 +100,7 @@
     
     
     
-    function model_build_field($name, $opts, $val = '', $label = true){
+    function model_build_field($name, $opts, $val = '', $label = true, $search = false){
         
         $result = '';
         
@@ -134,7 +134,7 @@
                   
                   $data = model_db_select(model_db_get($source[0]), [], 1);
                   
-                  $result .= interface_select($data, $name, $val, '', $name);
+                  $result .= interface_select($data, $name, $val, '', $name, $search);
               
               } else {
               
@@ -144,6 +144,13 @@
             
               break;
             
+            case "pass":
+               
+              if ( $label ) $result .= '<label for="'.$name.'">'.$opts['teg'].'</label>';
+                
+              $result .= '<input id="'.$name.'" type="password" name="'.$name.'" value="'.$val.'">';  
+            
+              break;
               
             default:
                
@@ -158,5 +165,104 @@
         return $result;
     
     }
+    
+    
+    
+    function model_db_insert($model, $data){
+      
+       $model = util_json_encode($model);  
+       
+       $q = "INSERT INTO `".$model['table']."` ";
+       
+       $fields = [];
+       
+       $values = [];
+       
+       foreach ($model['fields'] as $field => $options) {
+       
+          if (isset($data[$field]) && $options['type'] != 'auto'){
+          
+            $fields[] = $field;
+            
+            $values[] = db_antisql($data[$field]);
+            
+          }  
+       
+       }
+       
+       $q .= "(`".join('`, `', $fields)."`) VALUES ('".join("', '", $values)."')";
+       
+       return db_query($q);
+      
+    }
+    
+    function model_db_update($model, $data){
+      
+       $model = util_json_encode($model);
+       
+       $q = "UPDATE `".$model['table']."` SET";
+       
+       $fields = [];
+       
+       $values = [];
+       
+       foreach ($model['fields'] as $field => $options) {
+       
+          if (isset($data[$field]) && $options['type'] != 'auto'){
+          
+            $fields[] = "`".$field."` = '".$data[$field]."'";
+            
+          }  
+       
+       }
+       
+       $q .= join(', ', $fields)." WHERE id = ".$data['id'];
+       
+       return db_query($q);
+      
+    }
+    
+    
+    
+    function model_db_max($model){
+        
+        $model = util_json_encode($model);
+        
+        $q = "SELECT MAX(id) FROM `".$model['table']."`";
+        
+        $rs = db_query($q);
+        
+        $rw = db_array($rs);
+        
+        return $rw[0];
+            
+    }
+    
+    
+    function model_db_searchform($model, $data = []){
+        
+        $result = '';
+        
+        $model = util_json_encode($model);
+        
+        foreach ($model['fields'] as $name => $field){
+        
+            $field = array_merge(model_db_defoptions(), $field); 
+          
+            if ($field['filter'] != 1) continue;
+            
+            $result .= '<div class="form-control">';
+            
+                $result .= model_build_field($name, $field, $data[$name] ?? '', true, true);
+            
+            $result .= '</div>';
+                
+        }
+        
+        return $result;
+        
+    }
+    
+    
     
     

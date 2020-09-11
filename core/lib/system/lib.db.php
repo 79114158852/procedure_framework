@@ -77,11 +77,11 @@
     }
     
     
-    function db_antisql($text, $connector){
+    function db_antisql($text){
         
         global $app_db;
         
-        if ( empty($connector) ) $connector = array_slice($app_db, 0, 1);
+        if ( empty($connector) ) $connector = $app_db[0];
         
         return call_user_func_array('db_'.$connector['type'].'_antisql', [$text, $connector['link']]);
     

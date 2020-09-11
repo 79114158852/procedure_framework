@@ -1,7 +1,7 @@
 .messages{
     position:fixed;
     z-index:10001;
-    bottom:0;
+    bottom:50px;
     right:0;
     padding:15px;
     width:400px;
@@ -10,10 +10,12 @@
     overflow-y:auto;
 }
 .messages .message{
-    margin-top:15px;
-    padding:15px;
-    color:#FFF;
-    border-radius:4px;
+    margin-top: 15px;
+    padding: 15px;
+    color: #FFF;
+    border-radius: 4px;
+    position: relative;
+    padding-left: 75px;
 }
 .message.success{
     background:green;
@@ -28,6 +30,8 @@
     padding-right: 10px;
     color: #CCC;
     font-size: 12px;
+    position: absolute;
+    left: 15px;
 }
 .data-table{
     margin:15px 0;
@@ -38,7 +42,7 @@
     background:#FFF;
 }
 .data-table tr:hover td{
-    background:aliceblue;
+    background:aliceblue!important;
 }
 .data-table td{
     cursor:pointer;
@@ -46,24 +50,44 @@
 .data-table td.no-action{
     cursor:default;
 }
-.data-table tr, .data-table tr th{
+.data-table tr{
     border-bottom:1px solid #F3F3F3;
 }
+.data-table tr th{
+    border-bottom:2px solid #F3F3F3;
+    background:#ff8c00;
+    color:#FFF;
+}
+
 .data-table tr:last-child{
     border-bottom: none;
 }
 .data-table td, .data-table th{
     padding:10px;
     text-align:left;
+    font-size:12px;
 }
-.form label{
+th.header{
+    position:relative;
+}
+th.header:after{
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0dc";
+    position:fixed;
+    right:10px;
+    top:10px;
+}
+.headerSortUp:after{
+    display:block;
+    position:absolute;
+}
+.form label, .searchform .form-control label{
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: blueviolet;
     font-size: 12px;
 }
-.form input[type="text"], .form textarea, .form select{
+.form input[type="text"], .form textarea, .form select, .form input[type="password"], .searchform .form-control input[type="text"], .searchform .form-control input[type="number"],  .searchform .form-control select,  .searchform .form-control textarea{
     resize:vertical;
     font:inherit;
     display: block;
@@ -73,3 +97,32 @@
     border-radius: 4px;
     border: 1px solid #E5E5E5;
 }
+.form select, .searchform .form-control select{
+    padding:9px 10px;
+}
+.model-table tr th:nth-child(1), .model-table tr th:nth-child(2), .model-table tr td:nth-child(1), .model-table tr td:nth-child(2){
+    white-space:nowrap;
+    text-align:center;
+    width:1px;
+}
+.form-controls{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    width: Calc(100% - var(--left-col-width));
+    box-shadow: 1px 0 4px #CCC;
+    background: #F2F2F2;
+    padding: 10px 15px;
+}
+.form-controls .btn__green{
+    float:right;
+}
+.searchform{
+    
+}
+.searchform .form-control{
+    display:inline-block;
+    margin-right:15px;
+}
+

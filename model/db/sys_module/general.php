@@ -24,7 +24,7 @@
                                 "teg"       : "Опции",
                                 "type"      : "json", 
                                 "sort"      : 0,
-                                "filter"    : 1, 
+                                "filter"    : 0, 
                                 "view"      : 2
                              }
     

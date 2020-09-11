@@ -22,7 +22,7 @@
 			"filter": 1
 		},
 		"pass": {
-			"type": "pass(250)",
+			"type": "pass",
 			"teg": "Пароль",
 			"sort": 0,
 			"view": 2,

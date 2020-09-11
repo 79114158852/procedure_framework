@@ -21,5 +21,7 @@
 		
 	},
 	"404": "/404", 
-	"auth": "/auth"
+	"auth": "/auth",
+	"dbmodels": "model/db",
+	"views": "views"
 }

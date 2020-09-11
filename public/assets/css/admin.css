@@ -128,18 +128,19 @@
 .btn{
     display: inline-block;
     cursor: pointer;
-    /*font-family: arial,sans-serif;*/
-    font-size: 12px;
-    /*font-weight: bold;*/
+    font-size: 13px;
     color: rgb(68,68,68);
     text-decoration: none;
     user-select: none;
-    padding: 5px 10px;
+    padding: 10px;
     outline: none;
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 4px;
     background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
     transition: all .218s ease 0s;
+}
+.btn i{
+    margin-right:10px;
 }
 .btn__big{
     font-size: 14px;
@@ -147,22 +148,24 @@
 }
 .btn__green{
     color:#FFF;
-    background:green;
+    background: #008000 linear-gradient(#1caf1c, #008000);    
+}
+.btn__green:hover{
+    background: #008000 linear-gradient(#008000, #1caf1c);    
 }
 .btn__blue{
     color:#FFF;
-    background:#537397;    
+    background: #456082 linear-gradient(#537397, #456082);    
 }
 .btn__blue:hover{
-    background:#456082;
+    background: #456082 linear-gradient(#456082, #537397);
 }
 .btn__red{
     color:#FFF;
-    background:red;
+    background: red linear-gradient(red, #ca1111);
 }
 .btn__red:hover{
-    color:#FFF;
-    background:red;
+    background: red linear-gradient(#ca1111, red);
 }
 .edit__control{
     display:block;

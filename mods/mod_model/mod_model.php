@@ -2,8 +2,6 @@
 
     core_secret();
     
-    
-    
     $mode = 'list';
     
     if (isset ($_GET['id']) ) $mode = 'edit';
@@ -12,15 +10,20 @@
     
     $model = model_db_get($options['model']);
     
+    
+    if(isset($_POST['id'])) require 'helper.php';
+    
     switch ( $mode ) {
     
         case "edit":
           
-          $data = model_db_select($model, ['where' => [$options['model'].'.id='.$_GET['id']]], 2);
+          if ($_GET['id'] > 0) {
           
-          $data = db_assoc($data);
+              $data = model_db_select($model, ['where' => [$options['model'].'.id='.$_GET['id']]], 2);
+              
+              $data = db_assoc($data);
           
-          //util_array($data);
+          }
           
           $model = util_json_encode($model);  
           
@@ -31,12 +34,26 @@
           break;
                     
         default:
-            
-          $data = model_db_select($model, [], 1);
           
-          $data = db_assoc_all($data);
+          $jmodel = util_json_encode($model);
+          
+          $opts = ['where'=>[], 'order'=>[]];
           
           $thead = model_get_header($model, 1);
+          
+          foreach ( $thead as $field_name => $field_options) {
+              
+              if ( $field_options['filter'] == '1' && isset($_GET[$field_name]) && !empty($_GET[$field_name]) ){
+                  
+                  $opts['where'][] = "`".$jmodel['table']."`.".$field_name." = '".$_GET[$field_name]."'";
+                  
+              }     
+          
+          }
+            
+          $data = model_db_select($model, $opts, 1);
+          
+          $data = db_assoc_all($data);
           
           $template = 'list.tpl';
             
